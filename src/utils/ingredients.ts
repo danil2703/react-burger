@@ -1,10 +1,11 @@
 import { TIngredient } from '@utils/types.ts';
+import { IngredientTypeEnum } from './enums';
 
 export const ingredients: TIngredient[] = [
 	{
 		_id: '60666c42cc7b410027a1a9b1',
 		name: 'Краторная булка N-200i',
-		type: 'bun',
+		type: IngredientTypeEnum.BUN,
 		proteins: 80,
 		fat: 24,
 		carbohydrates: 53,
@@ -18,7 +19,7 @@ export const ingredients: TIngredient[] = [
 	{
 		_id: '60666c42cc7b410027a1a9b5',
 		name: 'Говяжий метеорит (отбивная)',
-		type: 'main',
+		type: IngredientTypeEnum.TOPPING,
 		proteins: 800,
 		fat: 800,
 		carbohydrates: 300,
@@ -32,7 +33,7 @@ export const ingredients: TIngredient[] = [
 	{
 		_id: '60666c42cc7b410027a1a9b6',
 		name: 'Биокотлета из марсианской Магнолии',
-		type: 'main',
+		type: IngredientTypeEnum.TOPPING,
 		proteins: 420,
 		fat: 142,
 		carbohydrates: 242,
@@ -46,7 +47,7 @@ export const ingredients: TIngredient[] = [
 	{
 		_id: '60666c42cc7b410027a1a9b7',
 		name: 'Соус Spicy-X',
-		type: 'sauce',
+		type: IngredientTypeEnum.SAUCE,
 		proteins: 30,
 		fat: 20,
 		carbohydrates: 40,
@@ -60,7 +61,7 @@ export const ingredients: TIngredient[] = [
 	{
 		_id: '60666c42cc7b410027a1a9b4',
 		name: 'Мясо бессмертных моллюсков Protostomia',
-		type: 'main',
+		type: IngredientTypeEnum.TOPPING,
 		proteins: 433,
 		fat: 244,
 		carbohydrates: 33,
@@ -74,7 +75,7 @@ export const ingredients: TIngredient[] = [
 	{
 		_id: '60666c42cc7b410027a1a9b9',
 		name: 'Соус традиционный галактический',
-		type: 'sauce',
+		type: IngredientTypeEnum.SAUCE,
 		proteins: 42,
 		fat: 24,
 		carbohydrates: 42,
@@ -88,7 +89,7 @@ export const ingredients: TIngredient[] = [
 	{
 		_id: '60666c42cc7b410027a1a9b8',
 		name: 'Соус фирменный Space Sauce',
-		type: 'sauce',
+		type: IngredientTypeEnum.SAUCE,
 		proteins: 50,
 		fat: 22,
 		carbohydrates: 11,
@@ -102,7 +103,7 @@ export const ingredients: TIngredient[] = [
 	{
 		_id: '60666c42cc7b410027a1a9bc',
 		name: 'Плоды Фалленианского дерева',
-		type: 'main',
+		type: IngredientTypeEnum.TOPPING,
 		proteins: 20,
 		fat: 5,
 		carbohydrates: 55,
@@ -116,7 +117,7 @@ export const ingredients: TIngredient[] = [
 	{
 		_id: '60666c42cc7b410027a1a9bb',
 		name: 'Хрустящие минеральные кольца',
-		type: 'main',
+		type: IngredientTypeEnum.TOPPING,
 		proteins: 808,
 		fat: 689,
 		carbohydrates: 609,
@@ -132,7 +133,7 @@ export const ingredients: TIngredient[] = [
 	{
 		_id: '60666c42cc7b410027a1a9ba',
 		name: 'Соус с шипами Антарианского плоскоходца',
-		type: 'sauce',
+		type: IngredientTypeEnum.SAUCE,
 		proteins: 101,
 		fat: 99,
 		carbohydrates: 100,
@@ -146,7 +147,7 @@ export const ingredients: TIngredient[] = [
 	{
 		_id: '60666c42cc7b410027a1a9bd',
 		name: 'Кристаллы марсианских альфа-сахаридов',
-		type: 'main',
+		type: IngredientTypeEnum.TOPPING,
 		proteins: 234,
 		fat: 432,
 		carbohydrates: 111,
@@ -160,7 +161,7 @@ export const ingredients: TIngredient[] = [
 	{
 		_id: '60666c42cc7b410027a1a9be',
 		name: 'Мини-салат Экзо-Плантаго',
-		type: 'main',
+		type: IngredientTypeEnum.TOPPING,
 		proteins: 1,
 		fat: 2,
 		carbohydrates: 3,
@@ -174,7 +175,7 @@ export const ingredients: TIngredient[] = [
 	{
 		_id: '60666c42cc7b410027a1a9b3',
 		name: 'Филе Люминесцентного тетраодонтимформа',
-		type: 'main',
+		type: IngredientTypeEnum.TOPPING,
 		proteins: 44,
 		fat: 26,
 		carbohydrates: 85,
@@ -188,7 +189,7 @@ export const ingredients: TIngredient[] = [
 	{
 		_id: '60666c42cc7b410027a1a9bf',
 		name: 'Сыр с астероидной плесенью',
-		type: 'main',
+		type: IngredientTypeEnum.TOPPING,
 		proteins: 84,
 		fat: 48,
 		carbohydrates: 420,
@@ -202,7 +203,7 @@ export const ingredients: TIngredient[] = [
 	{
 		_id: '60666c42cc7b410027a1a9b2',
 		name: 'Флюоресцентная булка R2-D3',
-		type: 'bun',
+		type: IngredientTypeEnum.BUN,
 		proteins: 44,
 		fat: 26,
 		carbohydrates: 85,

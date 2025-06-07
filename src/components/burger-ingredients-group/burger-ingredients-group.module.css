@@ -1,0 +1,9 @@
+.ingredients_group {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 24px;
+}
+
+.ingredients_group_item {
+	list-style: none;
+}

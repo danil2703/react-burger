@@ -1,0 +1,16 @@
+.ingredient {
+	position: relative;
+	width: 272px;
+	text-align: center;
+	list-style: none;
+}
+
+.ingredient_name {
+	min-height: calc(var(--offset-base-size) * 12);
+}
+
+.ingredient_price {
+	display: flex;
+	justify-self: center;
+	align-items: center;
+}

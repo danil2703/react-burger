@@ -2,6 +2,14 @@
 	display: flex;
 	flex-direction: column;
 	width: 600px;
-	padding-bottom: 20px;
+	margin: 0;
+	padding: 0;
 	color: var(--text-primary-color);
+}
+
+.ingredients {
+	display: flex;
+	flex-direction: column;
+	row-gap: calc(var(--offset-base-size) * 4);
+	overflow: auto;
 }
