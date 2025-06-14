@@ -17,13 +17,21 @@ export const BurgerConstructorElement = ({
 	isLocked = false,
 	type,
 }: BurgerConstructorElementProps): React.JSX.Element => {
+	let ingredientName = ingredient.name;
+
+	if (type === 'top') {
+		ingredientName += ' (верх)';
+	} else if (type === 'bottom') {
+		ingredientName += ' (низ)';
+	}
+
 	return (
 		<>
 			{!isLocked && <DragIcon className={styles.lock_icon} type='primary' />}
 			<ConstructorElement
 				extraClass='ml-8'
 				key={ingredient._id}
-				text={ingredient.name}
+				text={ingredientName}
 				thumbnail={ingredient.image}
 				price={ingredient.price}
 				isLocked={isLocked}

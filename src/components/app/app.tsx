@@ -12,7 +12,12 @@ export const App = (): React.JSX.Element => {
 
 	useEffect(() => {
 		fetch(INGREDIENTS_API)
-			.then((res) => res.json())
+			.then((res) => {
+				if (res.ok) {
+					return res.json();
+				}
+				return Promise.reject(`Ошибка ${res.status}`);
+			})
 			.then(({ data }) => {
 				setIngredients(data);
 			})

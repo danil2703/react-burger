@@ -5,6 +5,7 @@ import {
 } from '@ya.praktikum/react-developer-burger-ui-components';
 import styles from './burger-constructor-cart.module.css';
 import { OrderDetails } from '../order-details/order-details';
+import { Modal } from '../modal/modal';
 
 type BurgerConstructorCartProps = {
 	price: number;
@@ -33,10 +34,11 @@ export const BurgerConstructorCart = ({
 					Оформить заказ
 				</Button>
 			</div>
-			<OrderDetails
+			<Modal
 				isOpen={isShowOrderModal}
-				onClose={() => setIsShowOrderModal(false)}
-			/>
+				onClose={() => setIsShowOrderModal(false)}>
+				<OrderDetails />
+			</Modal>
 		</>
 	);
 };

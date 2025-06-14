@@ -5,6 +5,7 @@ import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
 import { BurgerIngredientsGroup } from '../burger-ingredients-group/burger-ingredients-group';
 import { IngredientTypeEnum } from '@/utils/enums';
 import { IngredientDetails } from '../ingredient-details/ingredient-details';
+import { Modal } from '../modal/modal';
 
 type BurgerIngredientsProps = {
 	ingredients: TIngredient[];
@@ -78,10 +79,13 @@ export const BurgerIngredients = ({
 					ingredients={sauces}
 					onIngredientClick={toggleIngredientModal}></BurgerIngredientsGroup>
 			</div>
-			<IngredientDetails
+
+			<Modal
+				title='Детали ингредиента'
 				onClose={closeIngredientModal}
-				ingredient={openedIngredient}
-			/>
+				isOpen={!!openedIngredient}>
+				<IngredientDetails ingredient={openedIngredient} />
+			</Modal>
 		</section>
 	);
 };

@@ -1,18 +1,9 @@
 import React from 'react';
 import styles from './order-details.module.css';
-import { Modal } from '../modal/modal';
 
-type OrderDetailsProps = {
-	isOpen: boolean;
-	onClose: () => void;
-};
-
-export const OrderDetails = ({
-	isOpen,
-	onClose,
-}: OrderDetailsProps): React.JSX.Element => {
+export const OrderDetails = (): React.JSX.Element => {
 	return (
-		<Modal onClose={onClose} isOpen={isOpen}>
+		<>
 			<div className={`${styles.order_number} text text_type_digits-large`}>
 				034536
 			</div>
@@ -21,7 +12,12 @@ export const OrderDetails = ({
 				идентификатор заказа
 			</p>
 
-			<img src='public/success.svg' width={120} height={120} alt='' />
+			<img
+				src='public/success.svg'
+				width={120}
+				height={120}
+				alt='Заказ прошел успешно'
+			/>
 
 			<div className='text text_type_main-default mb-20'>
 				<p className='mb-2 mt-15'>Ваш заказ начали готовить</p>
@@ -29,6 +25,6 @@ export const OrderDetails = ({
 					Дождитесь готовности на орбитальной станции
 				</p>
 			</div>
-		</Modal>
+		</>
 	);
 };
