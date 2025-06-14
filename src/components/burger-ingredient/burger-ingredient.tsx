@@ -4,14 +4,14 @@ import {
 } from '@ya.praktikum/react-developer-burger-ui-components';
 import React from 'react';
 import styles from './burger-ingredient.module.css';
-import { TIngredientCount } from '@/utils/types';
 
-type TBurgerIngredientProps = {
+type BurgerIngredientProps = {
 	_id: string;
 	name: string;
 	price: number;
 	image: string;
-	ingredientsCount?: TIngredientCount[];
+	count: number;
+	onClick?: (_id: string) => void;
 };
 
 export const BurgerIngredient = ({
@@ -19,12 +19,11 @@ export const BurgerIngredient = ({
 	name,
 	price,
 	image,
-	ingredientsCount = [],
-}: TBurgerIngredientProps): React.JSX.Element => {
-	const count = ingredientsCount.find((c) => c._id === _id)?.count;
-
+	count,
+	onClick,
+}: BurgerIngredientProps): React.JSX.Element => {
 	return (
-		<li className={`${styles.ingredient} mb-8`}>
+		<article onClick={() => onClick?.(_id)} className={styles.ingredient}>
 			{count && <Counter count={count} />}
 			<img src={image} alt={name} />
 			<div
@@ -35,6 +34,6 @@ export const BurgerIngredient = ({
 			<div className={`${styles.ingredient_name} text text_type_main-default`}>
 				{name}
 			</div>
-		</li>
+		</article>
 	);
 };

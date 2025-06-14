@@ -3,6 +3,7 @@
 	width: 272px;
 	text-align: center;
 	list-style: none;
+	cursor: pointer;
 }
 
 .ingredient_name {

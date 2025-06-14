@@ -1,53 +1,63 @@
 import { TIngredient } from '@utils/types.ts';
-import React from 'react';
+import React, { useMemo } from 'react';
 import styles from './burger-constructor.module.css';
 import { BurgerConstructorElement } from '../burger-constructor-element/burger-constructor-element';
 import { IngredientTypeEnum } from '@/utils/enums';
 import { BurgerConstructorCart } from '../burger-constructor-cart/burger-constructor-cart';
 
-type TBurgerConstructorProps = {
+type BurgerConstructorProps = {
 	ingredients: TIngredient[];
 };
 
 export const BurgerConstructor = ({
 	ingredients,
-}: TBurgerConstructorProps): React.JSX.Element => {
-	const bun = ingredients.find(
-		(ingredient) => ingredient.type === IngredientTypeEnum.BUN
+}: BurgerConstructorProps): React.JSX.Element => {
+	const bun = useMemo(
+		() =>
+			ingredients.find(
+				(ingredient) => ingredient.type === IngredientTypeEnum.BUN
+			),
+		[ingredients]
 	);
-	const filteredIngredients = ingredients.filter(
-		(ingredient) => ingredient.type !== IngredientTypeEnum.BUN
+
+	const filteredIngredients = useMemo(
+		() =>
+			ingredients.filter(
+				(ingredient) => ingredient.type !== IngredientTypeEnum.BUN
+			),
+		[ingredients]
 	);
 
 	return (
 		<ul className={styles.burger_constructor}>
 			{bun && (
-				<BurgerConstructorElement
-					extraClass='mb-4'
-					ingredient={bun}
-					type='top'
-					isLocked={true}
-				/>
+				<li className={`${styles.burger_constructor_li} mb-4`}>
+					<BurgerConstructorElement
+						ingredient={bun}
+						type='top'
+						isLocked={true}
+					/>
+				</li>
 			)}
 
 			<div className={styles.ingredients}>
 				{filteredIngredients.map((ingredient) => {
 					return (
-						<BurgerConstructorElement
-							key={ingredient._id}
-							ingredient={ingredient}
-						/>
+						<li key={ingredient._id} className={styles.burger_constructor_li}>
+							<BurgerConstructorElement ingredient={ingredient} />
+						</li>
 					);
 				})}
 			</div>
 
 			{bun && (
-				<BurgerConstructorElement
-					extraClass='mt-4'
-					ingredient={bun}
-					type='bottom'
-					isLocked={true}
-				/>
+				<li className={`${styles.burger_constructor_li} mt-4`}>
+					<BurgerConstructorElement
+						ingredient={bun}
+						type='bottom'
+						isLocked={true}
+					/>
+				</li>
 			)}
 			<BurgerConstructorCart price={1257} />
 		</ul>

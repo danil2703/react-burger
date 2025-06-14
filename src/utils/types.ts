@@ -14,8 +14,3 @@ export type TIngredient = {
 	image_mobile: string;
 	__v: number;
 };
-
-export type TIngredientCount = {
-	_id: string;
-	count: number;
-};

@@ -13,3 +13,8 @@
 	row-gap: calc(var(--offset-base-size) * 4);
 	overflow: auto;
 }
+
+.burger_constructor_li {
+	position: relative;
+	list-style: none;
+}

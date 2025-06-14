@@ -6,21 +6,19 @@ import {
 } from '@ya.praktikum/react-developer-burger-ui-components';
 import styles from './burger-constructor-element.module.css';
 
-type TBurgerConstructorElementProps = {
+type BurgerConstructorElementProps = {
 	ingredient: TIngredient;
 	isLocked?: boolean;
 	type?: 'top' | 'bottom';
-	extraClass?: string;
 };
 
 export const BurgerConstructorElement = ({
 	ingredient,
 	isLocked = false,
 	type,
-	extraClass,
-}: TBurgerConstructorElementProps): React.JSX.Element => {
+}: BurgerConstructorElementProps): React.JSX.Element => {
 	return (
-		<li className={`${styles.constructor_element} ${extraClass}`}>
+		<>
 			{!isLocked && <DragIcon className={styles.lock_icon} type='primary' />}
 			<ConstructorElement
 				extraClass='ml-8'
@@ -31,6 +29,6 @@ export const BurgerConstructorElement = ({
 				isLocked={isLocked}
 				type={type}
 			/>
-		</li>
+		</>
 	);
 };
