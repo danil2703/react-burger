@@ -1,0 +1,15 @@
+.constructor_cart {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.currency_icon {
+	width: 36px;
+	height: 36px;
+}
+
+.price {
+	display: flex;
+	align-items: center;
+}

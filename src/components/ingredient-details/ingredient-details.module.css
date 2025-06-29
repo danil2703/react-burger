@@ -1,0 +1,11 @@
+.callories {
+	display: flex;
+	justify-content: center;
+	color: var(--text-inactive-color);
+	column-gap: calc(var(--offset-base-size) * 4);
+}
+
+.image {
+	width: 480px;
+	height: 240px;
+}

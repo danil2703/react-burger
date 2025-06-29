@@ -1,0 +1,10 @@
+.ingredients_group {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 24px;
+	gap: calc(var(--offset-base-size) * 8) calc(var(--offset-base-size) * 6);
+}
+
+.ingredients_group_item {
+	list-style: none;
+}
