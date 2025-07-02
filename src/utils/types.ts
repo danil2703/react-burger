@@ -14,3 +14,20 @@ export type TIngredient = {
 	image_mobile: string;
 	__v: number;
 };
+
+export interface StoredIngredient extends TIngredient {
+	key: string;
+}
+
+export interface IngredientsResponse {
+	success: boolean;
+	data: TIngredient[];
+}
+
+export interface OrderResponse {
+	order: {
+		number: number;
+	};
+	success: boolean;
+	name: string;
+}

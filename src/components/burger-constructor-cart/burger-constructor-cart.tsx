@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
 	Button,
 	CurrencyIcon,
@@ -6,38 +6,40 @@ import {
 import styles from './burger-constructor-cart.module.css';
 import { OrderDetails } from '../order-details/order-details';
 import { Modal } from '../modal/modal';
+import { useSelector } from 'react-redux';
+import {
+	getIdsForOrder,
+	getTotalSum,
+} from '@/services/burger-constructor/burger-constructor';
+import { useSendOrderMutation } from '@/services/ingredients-api/ingredients-api';
 
-type BurgerConstructorCartProps = {
-	price: number;
-};
-
-export const BurgerConstructorCart = ({
-	price,
-}: BurgerConstructorCartProps): React.JSX.Element => {
-	const [isShowOrderModal, setIsShowOrderModal] = useState<boolean>(false);
+export const BurgerConstructorCart = (): React.JSX.Element => {
+	const totalSum = useSelector(getTotalSum);
+	const [sendOrder, { isSuccess, data, isLoading, reset }] =
+		useSendOrderMutation();
+	const orderIds = useSelector(getIdsForOrder);
 
 	return (
 		<>
 			<div className={`${styles.constructor_cart} pt-10 pb-13`}>
 				<span className={`${styles.price} text text_type_digits-medium mr-10`}>
-					{price}
+					{totalSum}
 					<CurrencyIcon
 						className={`${styles.currency_icon} ml-2`}
 						type='primary'
 					/>
 				</span>
 				<Button
-					onClick={() => setIsShowOrderModal(true)}
+					onClick={() => sendOrder(orderIds)}
 					htmlType='button'
 					type='primary'
+					disabled={isLoading}
 					size='large'>
 					Оформить заказ
 				</Button>
 			</div>
-			<Modal
-				isOpen={isShowOrderModal}
-				onClose={() => setIsShowOrderModal(false)}>
-				<OrderDetails />
+			<Modal isOpen={isSuccess} onClose={reset}>
+				{isSuccess && <OrderDetails orderNumber={data.order.number} />}
 			</Modal>
 		</>
 	);

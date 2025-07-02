@@ -3,3 +3,8 @@ export const enum IngredientTypeEnum {
 	TOPPING = 'main',
 	SAUCE = 'sauce',
 }
+
+export const enum DragObjectEnum {
+	INGREDIENT = 'INGREDIENT',
+	CONSTRUCTOR_ELEMENT = 'CONSTRUCTOR_ELEMENT',
+}
