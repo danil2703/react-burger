@@ -3,7 +3,7 @@ import styles from './ingredient-details.module.css';
 import { TIngredient } from '@utils/types.ts';
 
 type IngredientDetailsProps = {
-	ingredient: TIngredient | undefined;
+	ingredient: TIngredient | null;
 };
 
 export const IngredientDetails = ({

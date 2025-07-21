@@ -1,11 +1,17 @@
 import React from 'react';
 import styles from './order-details.module.css';
 
-export const OrderDetails = (): React.JSX.Element => {
+type OrderDetailsProps = {
+	orderNumber: number;
+};
+
+export const OrderDetails = ({
+	orderNumber,
+}: OrderDetailsProps): React.JSX.Element => {
 	return (
 		<>
 			<div className={`${styles.order_number} text text_type_digits-large`}>
-				034536
+				{orderNumber}
 			</div>
 
 			<p className='text text_type_main-medium mt-8 mb-15'>
