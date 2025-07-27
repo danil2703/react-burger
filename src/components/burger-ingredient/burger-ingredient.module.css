@@ -15,3 +15,8 @@
 	justify-self: center;
 	align-items: center;
 }
+
+.link {
+	color: var(--text-primary-color);
+	text-decoration: none;
+}

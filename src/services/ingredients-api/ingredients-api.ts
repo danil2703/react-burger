@@ -3,10 +3,13 @@ import { IngredientTypeEnum } from '@/utils/enums';
 import { IngredientsResponse, OrderResponse, TIngredient } from '@/utils/types';
 import { createSelector } from '@reduxjs/toolkit';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { RootState } from '../store';
 
 export const ingredientsApi = createApi({
 	reducerPath: 'ingredientsApi',
-	baseQuery: fetchBaseQuery({ baseUrl: INGREDIENTS_API }),
+	baseQuery: fetchBaseQuery({
+		baseUrl: INGREDIENTS_API,
+	}),
 	endpoints: (builder) => ({
 		getIngredients: builder.query<TIngredient[], void>({
 			query: () => '/ingredients',
@@ -20,6 +23,9 @@ export const ingredientsApi = createApi({
 				method: 'POST',
 				body: {
 					ingredients,
+				},
+				headers: {
+					Authorization: localStorage.getItem('accessToken') || '',
 				},
 			}),
 		}),
@@ -50,6 +56,13 @@ export const getSauceIngredients = createSelector(
 		ingredients.data?.filter(
 			(ingredient) => ingredient.type === IngredientTypeEnum.SAUCE
 		) || []
+);
+
+export const selectIngredientById = createSelector(
+	ingredients,
+	(_: RootState, ingredientId: string) => ingredientId,
+	(ingredients, ingredientId) =>
+		ingredients.data?.find((ingredient) => ingredient._id === ingredientId)
 );
 
 export const { useGetIngredientsQuery, useSendOrderMutation } = ingredientsApi;

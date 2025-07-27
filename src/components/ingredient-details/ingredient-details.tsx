@@ -1,20 +1,22 @@
 import React from 'react';
 import styles from './ingredient-details.module.css';
-import { TIngredient } from '@utils/types.ts';
+import { Params, useParams } from 'react-router-dom';
+import { selectIngredientById } from '@/services/ingredients-api/ingredients-api';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/services/store';
 
-type IngredientDetailsProps = {
-	ingredient: TIngredient | null;
-};
+export const IngredientDetails = (): React.JSX.Element | null => {
+	const { ingredientId } = useParams<Params>();
+	const ingredient = useSelector((state: RootState) =>
+		selectIngredientById(state, ingredientId || '')
+	);
 
-export const IngredientDetails = ({
-	ingredient,
-}: IngredientDetailsProps): React.JSX.Element | null => {
 	if (!ingredient) {
 		return null;
 	}
 
 	return (
-		<>
+		<div className={styles.details}>
 			<img
 				className={styles.image}
 				src={ingredient.image_large}
@@ -44,6 +46,6 @@ export const IngredientDetails = ({
 					</div>
 				</div>
 			</div>
-		</>
+		</div>
 	);
 };

@@ -6,12 +6,11 @@ import { BurgerIngredient } from '../burger-ingredient/burger-ingredient';
 type BurgerIngredientsProps = {
 	ingredients: TIngredient[];
 	title: string;
-	onIngredientClick?: (_id: string) => void;
 };
 
 export const BurgerIngredientsGroup = forwardRef(
 	(
-		{ ingredients, title, onIngredientClick }: BurgerIngredientsProps,
+		{ ingredients, title }: BurgerIngredientsProps,
 		titleRef: ForwardedRef<HTMLHeadingElement>
 	): React.JSX.Element => {
 		return (
@@ -22,11 +21,7 @@ export const BurgerIngredientsGroup = forwardRef(
 				<div className={styles.ingredients_group}>
 					{ingredients.map((ingredient) => {
 						return (
-							<BurgerIngredient
-								ingredient={ingredient}
-								key={ingredient._id}
-								onClick={onIngredientClick}
-							/>
+							<BurgerIngredient ingredient={ingredient} key={ingredient._id} />
 						);
 					})}
 				</div>
