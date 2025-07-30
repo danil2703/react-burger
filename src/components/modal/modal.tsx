@@ -7,7 +7,6 @@ import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 const modalRoot = document.getElementById('modal-root');
 
 type ModalProps = {
-	isOpen: boolean;
 	children: React.ReactNode;
 	onClose: () => void;
 	title?: string;
@@ -16,7 +15,6 @@ type ModalProps = {
 export const Modal = ({
 	title,
 	children,
-	isOpen,
 	onClose,
 }: ModalProps): React.JSX.Element | null => {
 	const onKeydown = ({ key }: KeyboardEvent) => {
@@ -31,7 +29,7 @@ export const Modal = ({
 		return () => document.removeEventListener('keydown', onKeydown);
 	});
 
-	if (!isOpen || !modalRoot) {
+	if (!modalRoot) {
 		return null;
 	}
 

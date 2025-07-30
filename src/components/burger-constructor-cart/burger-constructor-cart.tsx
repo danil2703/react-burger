@@ -12,12 +12,23 @@ import {
 	getTotalSum,
 } from '@/services/burger-constructor/burger-constructor';
 import { useSendOrderMutation } from '@/services/ingredients-api/ingredients-api';
+import { getUser } from '@/services/user/user';
+import { useNavigate } from 'react-router-dom';
 
 export const BurgerConstructorCart = (): React.JSX.Element => {
 	const totalSum = useSelector(getTotalSum);
 	const [sendOrder, { isSuccess, data, isLoading, reset }] =
 		useSendOrderMutation();
 	const orderIds = useSelector(getIdsForOrder);
+	const user = useSelector(getUser);
+	const navigate = useNavigate();
+
+	const createOrder = () => {
+		if (!user) {
+			navigate('/login');
+		}
+		sendOrder(orderIds);
+	};
 
 	return (
 		<>
@@ -30,7 +41,7 @@ export const BurgerConstructorCart = (): React.JSX.Element => {
 					/>
 				</span>
 				<Button
-					onClick={() => sendOrder(orderIds)}
+					onClick={createOrder}
 					htmlType='button'
 					type='primary'
 					disabled={isLoading}
@@ -38,9 +49,14 @@ export const BurgerConstructorCart = (): React.JSX.Element => {
 					Оформить заказ
 				</Button>
 			</div>
-			<Modal isOpen={isSuccess} onClose={reset}>
-				{isSuccess && <OrderDetails orderNumber={data.order.number} />}
-			</Modal>
+			{(isSuccess || isLoading) && (
+				<Modal onClose={reset}>
+					<OrderDetails
+						orderNumber={data?.order.number}
+						isLoading={isLoading}
+					/>
+				</Modal>
+			)}
 		</>
 	);
 };

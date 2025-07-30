@@ -1,0 +1,37 @@
+.container {
+	display: flex;
+	width: 1240px;
+	height: 56px;
+	margin: 0 auto;
+	margin-top: 120px;
+}
+
+.navigation {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	max-width: 320px;
+}
+
+.navigation__link {
+	color: var(--text-inactive-color);
+	text-decoration: none;
+}
+
+.navigation__link_active {
+	color: #f2f2f3;
+}
+
+.logout_button {
+	color: var(--text-inactive-color);
+	background-color: transparent;
+	border: 0;
+	cursor: pointer;
+}
+
+.navigation__link,
+.logout_button {
+	display: flex;
+	align-items: center;
+	min-height: 64px;
+}

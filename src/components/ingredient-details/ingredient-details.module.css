@@ -9,3 +9,9 @@
 	width: 480px;
 	height: 240px;
 }
+
+.details {
+	max-width: 480px;
+	margin: 0 auto;
+	text-align: center;
+}
