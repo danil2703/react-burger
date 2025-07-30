@@ -24,3 +24,5 @@
 		'@utils': path.resolve(__dirname, './src/utils'),
 	},
 ```
+
+// Изначально проект был написан на typescript.
