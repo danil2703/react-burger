@@ -18,7 +18,7 @@ export const ProfileOrders = (): React.JSX.Element => {
 		const wssUrl = new URL(ORDER_SOCKET_URL);
 		const accessToken = localStorage
 			.getItem('accessToken')
-			?.replace('Bearer', '');
+			?.replace('Bearer ', '');
 		wssUrl.searchParams.set('token', accessToken || '');
 		dispatch(profileOrdersConnect(wssUrl.toString()));
 		return () => {
