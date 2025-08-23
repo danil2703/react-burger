@@ -1,0 +1,13 @@
+.orders_table {
+	display: flex;
+	gap: calc(var(--offset-base-size) * 9);
+}
+
+.order_list {
+	display: flex;
+	flex-flow: column wrap;
+	min-width: 272px;
+	max-height: 220px;
+	padding: 0;
+	list-style: none;
+}

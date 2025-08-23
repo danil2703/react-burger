@@ -6,7 +6,6 @@ import {
 import styles from './burger-constructor-cart.module.css';
 import { OrderDetails } from '../order-details/order-details';
 import { Modal } from '../modal/modal';
-import { useSelector } from 'react-redux';
 import {
 	getIdsForOrder,
 	getTotalSum,
@@ -14,6 +13,7 @@ import {
 import { useSendOrderMutation } from '@/services/ingredients-api/ingredients-api';
 import { getUser } from '@/services/user/user';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from '@/services/store';
 
 export const BurgerConstructorCart = (): React.JSX.Element => {
 	const totalSum = useSelector(getTotalSum);

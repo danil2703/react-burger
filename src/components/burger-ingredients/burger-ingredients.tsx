@@ -2,12 +2,12 @@ import React, { useCallback, useRef, useState } from 'react';
 import styles from './burger-ingredients.module.css';
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
 import { BurgerIngredientsGroup } from '../burger-ingredients-group/burger-ingredients-group';
-import { useSelector } from 'react-redux';
 import {
 	getBunIngredients,
 	getSauceIngredients,
 	getToppingIngredients,
 } from '@/services/ingredients-api/ingredients-api';
+import { useSelector } from '@/services/store';
 
 export const BurgerIngredients = (): React.JSX.Element => {
 	const [activeTab, setActiveTab] = useState(0);
