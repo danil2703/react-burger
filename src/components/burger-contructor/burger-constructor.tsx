@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './burger-constructor.module.css';
 import { BurgerConstructorElement } from '../burger-constructor-element/burger-constructor-element';
 import { BurgerConstructorCart } from '../burger-constructor-cart/burger-constructor-cart';
-import { useDispatch, useSelector } from 'react-redux';
 import {
 	addBun,
 	addIngredient,
@@ -13,6 +12,7 @@ import { BurgerConstructorDragContainer } from '../burger-constructor-drag-conta
 import { useDrop } from 'react-dnd';
 import { TIngredient } from '@/utils/types';
 import { DragObjectEnum, IngredientTypeEnum } from '@/utils/enums';
+import { useDispatch, useSelector } from '@/services/store';
 
 export const BurgerConstructor = (): React.JSX.Element => {
 	const bun = useSelector(getBun);

@@ -17,7 +17,8 @@ export const OrderDetails = ({
 				<Preloader></Preloader>
 			) : (
 				<>
-					<div className={`${styles.order_number} text text_type_digits-large`}>
+					<div
+						className={`${styles.order_number} text text_type_digits-large digint-shadow`}>
 						{orderNumber}
 					</div>
 

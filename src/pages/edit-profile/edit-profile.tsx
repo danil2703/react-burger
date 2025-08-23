@@ -1,4 +1,4 @@
-import { AppDispatch } from '@/services/store';
+import { useDispatch, useSelector } from '@/services/store';
 import { getUser } from '@/services/user/user';
 import { updateUser } from '@/services/user/user-action';
 import {
@@ -8,7 +8,6 @@ import {
 	PasswordInput,
 } from '@ya.praktikum/react-developer-burger-ui-components';
 import React, { FormEvent, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import styles from './edit.profile.module.css';
 
 export const EditProfile = (): React.JSX.Element => {
@@ -17,7 +16,7 @@ export const EditProfile = (): React.JSX.Element => {
 	const [email, setEmail] = useState(user?.email || '');
 	const [password, setPassword] = useState('');
 
-	const dispatch = useDispatch<AppDispatch>();
+	const dispatch = useDispatch();
 
 	const formSubmit = (e: FormEvent) => {
 		e.preventDefault();
@@ -31,7 +30,7 @@ export const EditProfile = (): React.JSX.Element => {
 	};
 
 	return (
-		<form onSubmit={formSubmit}>
+		<form className={styles.form} onSubmit={formSubmit}>
 			<Input
 				type={'text'}
 				placeholder={'Имя'}
