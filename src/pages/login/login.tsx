@@ -6,14 +6,13 @@ import {
 	PasswordInput,
 } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '@/services/store';
+import { useDispatch } from '@/services/store';
 import { login } from '@/services/user/user-action';
 
 export const Login = (): React.JSX.Element => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-	const dispatch = useDispatch<AppDispatch>();
+	const dispatch = useDispatch();
 
 	const formSubmit = (e: FormEvent) => {
 		e.preventDefault();

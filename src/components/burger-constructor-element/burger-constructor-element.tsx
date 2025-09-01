@@ -5,7 +5,6 @@ import {
 	DragIcon,
 } from '@ya.praktikum/react-developer-burger-ui-components';
 import styles from './burger-constructor-element.module.css';
-import { useDispatch } from 'react-redux';
 import {
 	cancelDrag,
 	clearDragData,
@@ -14,6 +13,7 @@ import {
 } from '@/services/burger-constructor/burger-constructor';
 import { useDrag, useDrop } from 'react-dnd';
 import { DragObjectEnum } from '@/utils/enums';
+import { useDispatch } from '@/services/store';
 
 type BurgerConstructorElementProps = {
 	ingredient: StoredIngredient;

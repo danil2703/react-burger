@@ -1,9 +1,15 @@
 import { INGREDIENTS_API } from '@/utils/constants';
 import { IngredientTypeEnum } from '@/utils/enums';
-import { IngredientsResponse, OrderResponse, TIngredient } from '@/utils/types';
-import { createSelector } from '@reduxjs/toolkit';
+import {
+	IngredientsResponse,
+	OrderMessage,
+	OrderResponse,
+	OrderT,
+	TIngredient,
+} from '@/utils/types';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { RootState } from '../store';
+import { createSelector } from '@reduxjs/toolkit';
 
 export const ingredientsApi = createApi({
 	reducerPath: 'ingredientsApi',
@@ -28,6 +34,12 @@ export const ingredientsApi = createApi({
 					Authorization: localStorage.getItem('accessToken') || '',
 				},
 			}),
+		}),
+		getOrderByNumber: builder.query<OrderT, string>({
+			query: (orderNum: string) => ({ url: `orders/${orderNum}` }),
+			transformResponse: (response: OrderMessage): OrderT => {
+				return response.orders[0];
+			},
 		}),
 	}),
 });
@@ -65,4 +77,46 @@ export const selectIngredientById = createSelector(
 		ingredients.data?.find((ingredient) => ingredient._id === ingredientId)
 );
 
-export const { useGetIngredientsQuery, useSendOrderMutation } = ingredientsApi;
+export const selectIngredientsByIds = createSelector(
+	ingredients,
+	(_: RootState, ingredientIds: string[]) => ingredientIds,
+	(ingredients, ingredientIds) =>
+		ingredientIds.map((id) =>
+			ingredients.data?.find((ingredient) => ingredient._id === id)
+		)
+);
+
+export const getIngredientsWithCount = createSelector(
+	ingredients,
+	(_: RootState, ingredientIds: string[]) => ingredientIds,
+	(ingredients, ingredientIds) => {
+		const ingredientsMap = new Map();
+
+		ingredientIds.forEach((id) => {
+			const ingredient = ingredients.data?.find(
+				(ingredient) => ingredient._id === id
+			);
+
+			if (!ingredient) {
+				return;
+			}
+
+			if (ingredientsMap.has(id)) {
+				ingredientsMap.set(id, {
+					count: ingredientsMap.get(id).count + 1,
+					ingredient,
+				});
+			} else {
+				ingredientsMap.set(id, { count: 1, ingredient });
+			}
+		});
+
+		return Array.from(ingredientsMap.values());
+	}
+);
+
+export const {
+	useGetIngredientsQuery,
+	useGetOrderByNumberQuery,
+	useSendOrderMutation,
+} = ingredientsApi;

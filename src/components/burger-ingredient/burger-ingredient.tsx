@@ -6,9 +6,8 @@ import React from 'react';
 import styles from './burger-ingredient.module.css';
 import { useDrag } from 'react-dnd';
 import { TIngredient } from '@/utils/types';
-import { useSelector } from 'react-redux';
 import { getCountOfIngredient } from '@/services/burger-constructor/burger-constructor';
-import { RootState } from '@/services/store';
+import { RootState, useSelector } from '@/services/store';
 import { DragObjectEnum } from '@/utils/enums';
 import { Link, useLocation } from 'react-router-dom';
 

@@ -9,18 +9,19 @@ import { useGetIngredientsQuery } from '@/services/ingredients-api/ingredients-a
 import { Login } from '@/pages/login/login';
 import { Register } from '@/pages/register/register';
 import { ForgotPassword } from '@/pages/forgot-password/forgot-password';
-import { useDispatch } from 'react-redux';
 import { checkUserAuth } from '@/services/user/user-action';
-import { AppDispatch } from '@/services/store';
+import { useDispatch } from '@/services/store';
 import {
 	OnlyUnAuth,
 	OnlyAuth,
 } from '@components/protected-route/protected-route';
 
 import { Profile } from '@/pages/profile/profile';
-import { Orders } from '@/pages/orders/orders';
 import { EditProfile } from '@/pages/edit-profile/edit-profile';
 import { ResetPassword } from '@/pages/reset-password/reset-password';
+import { Feed } from '@/pages/feed/feed';
+import { ProfileOrders } from '@/pages/profile-orders/profile-orders';
+import { OrderFullInfo } from '../order-full-info/order-full-info';
 
 export const App = (): React.JSX.Element => {
 	const location = useLocation();
@@ -32,7 +33,7 @@ export const App = (): React.JSX.Element => {
 		navigate(-1);
 	};
 
-	const dispatch = useDispatch<AppDispatch>();
+	const dispatch = useDispatch();
 
 	useEffect(() => {
 		dispatch(checkUserAuth());
@@ -43,14 +44,17 @@ export const App = (): React.JSX.Element => {
 			<AppHeader />
 			<Routes location={background || location}>
 				<Route path='/' element={<Home />} />
+				<Route path='/test' element={<OrderFullInfo />} />
 				<Route
 					path='/ingredients/:ingredientId'
 					element={<IngredientDetails />}
 				/>
 				<Route path='/profile' element={<OnlyAuth component={<Profile />} />}>
 					<Route path='/profile' element={<EditProfile />} />
-					<Route path=':orders' element={<Orders />} />
+					<Route path=':orders' element={<ProfileOrders />} />
 				</Route>
+				<Route path='/feed' element={<Feed />} />
+				<Route path='/feed/:number' element={<OrderFullInfo />} />
 				<Route path='/login' element={<OnlyUnAuth component={<Login />} />} />
 				<Route
 					path='/register'
@@ -65,6 +69,19 @@ export const App = (): React.JSX.Element => {
 					element={<OnlyUnAuth component={<ResetPassword />} />}
 				/>
 			</Routes>
+
+			{background && (
+				<Routes>
+					<Route
+						path='/feed/:number'
+						element={
+							<Modal onClose={handleModalClose}>
+								<OrderFullInfo />
+							</Modal>
+						}
+					/>
+				</Routes>
+			)}
 
 			{background && (
 				<Routes>

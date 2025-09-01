@@ -1,4 +1,4 @@
-import { IngredientTypeEnum } from './enums';
+import { IngredientTypeEnum, OrderStatus } from './enums';
 
 export type TIngredient = {
 	_id: string;
@@ -64,3 +64,28 @@ export type UserResponse = {
 	refreshToken: string;
 	user: UserProfile;
 };
+
+export type OrderT = {
+	_id: string;
+	ingredients: string[];
+	status: OrderStatus;
+	name: string;
+	createdAt: string;
+	updatedAt: string;
+	number: number;
+};
+
+export const OrderStatusText: Record<OrderStatus, string> = {
+	done: 'Выполнен',
+	pending: 'В процессе',
+	created: 'Создан',
+};
+
+export interface OrderMessage {
+	orders: OrderT[];
+}
+
+export interface FeedMessage extends OrderMessage {
+	total: number;
+	totalToday: number;
+}

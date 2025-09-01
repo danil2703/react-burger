@@ -1,0 +1,13 @@
+.orders_list {
+	height: fit-content;
+	max-height: calc(100vh - 260px);
+	margin: 0;
+	padding-left: 0;
+	overflow: auto;
+	list-style: none;
+}
+
+.orders {
+	width: 100%;
+	margin-top: calc(var(--offset-base-size) * 10);
+}

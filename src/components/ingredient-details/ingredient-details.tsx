@@ -2,8 +2,7 @@ import React from 'react';
 import styles from './ingredient-details.module.css';
 import { Params, useParams } from 'react-router-dom';
 import { selectIngredientById } from '@/services/ingredients-api/ingredients-api';
-import { useSelector } from 'react-redux';
-import { RootState } from '@/services/store';
+import { RootState, useSelector } from '@/services/store';
 
 export const IngredientDetails = (): React.JSX.Element | null => {
 	const { ingredientId } = useParams<Params>();

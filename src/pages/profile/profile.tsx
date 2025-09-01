@@ -1,12 +1,11 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import styles from './profile.module.css';
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '@/services/store';
 import { logout } from '@/services/user/user-action';
+import { useDispatch } from '@/services/store';
 
 export const Profile = (): React.JSX.Element => {
-	const dispatch = useDispatch<AppDispatch>();
+	const dispatch = useDispatch();
 
 	const logoutClick = () => {
 		dispatch(logout());
