@@ -36,7 +36,7 @@ export const BurgerIngredient = ({
 			key={_id}
 			to={`/ingredients/${_id}`}
 			state={{ background: location }}>
-			<article ref={drag} className={styles.ingredient}>
+			<article ref={drag} data-testid='drag-item' className={styles.ingredient}>
 				{count > 0 && <Counter count={count} />}
 				<img src={image} alt={name} />
 				<div

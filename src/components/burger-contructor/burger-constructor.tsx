@@ -37,7 +37,10 @@ export const BurgerConstructor = (): React.JSX.Element => {
 	});
 
 	return (
-		<ul ref={dropTarget} className={`${styles.burger_constructor}`}>
+		<ul
+			ref={dropTarget}
+			data-testid='drop-target'
+			className={`${styles.burger_constructor}`}>
 			{bun && (
 				<li className={`${styles.burger_constructor_li} mb-4`}>
 					<BurgerConstructorElement

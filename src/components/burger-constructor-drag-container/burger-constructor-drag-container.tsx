@@ -15,7 +15,7 @@ export const BurgerConstructorDragContainer = ({
 		<ConstructorElement
 			extraClass={`ml-8 ${canDrop && styles.can_drop}`}
 			text={'пусто'}
-			thumbnail={'/public/ripples.svg'}
+			thumbnail={'ripples.svg'}
 			price={0}
 			isLocked={true}
 			type={type}

@@ -20,9 +20,14 @@ export const IngredientDetails = (): React.JSX.Element | null => {
 				className={styles.image}
 				src={ingredient.image_large}
 				alt={ingredient.name}
+				data-testid='ingredient-img'
 			/>
 
-			<p className='text text_type_main-medium mt-4'>{ingredient.name}</p>
+			<p
+				className='text text_type_main-medium mt-4'
+				data-testid='ingredient-name'>
+				{ingredient.name}
+			</p>
 
 			<div
 				className={`${styles.callories} text text_type_main-default mt-8 mb-5`}>
