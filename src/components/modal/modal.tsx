@@ -42,7 +42,10 @@ export const Modal = ({
 						{title}
 					</h3>
 
-					<button onClick={onClose} className={styles.modal_close_button}>
+					<button
+						onClick={onClose}
+						className={styles.modal_close_button}
+						data-testid='modal-close-btn'>
 						<CloseIcon type='primary' />
 					</button>
 				</div>

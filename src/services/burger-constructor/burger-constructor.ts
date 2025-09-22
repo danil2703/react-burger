@@ -1,4 +1,3 @@
-import { IngredientTypeEnum } from '@/utils/enums';
 import { StoredIngredient, TIngredient } from '@/utils/types';
 import {
 	createSelector,
@@ -72,14 +71,7 @@ export const burgerConstructorSlice = createSlice({
 	reducers: {
 		addIngredient: {
 			reducer: (state, action: PayloadAction<StoredIngredient>) => {
-				if (action.payload.type === IngredientTypeEnum.BUN) {
-					state.ingredients = [
-						...burgerConstructorSlice.getSelectors().getIngredients(state),
-						action.payload,
-					];
-				} else {
-					state.ingredients.push(action.payload);
-				}
+				state.ingredients.push(action.payload);
 			},
 			prepare: (element: TIngredient) => addKeyToIngredient(element),
 		},
